@@ -78,6 +78,7 @@ const store = new vuex.Store({
                 state.cart = response.data
             })
             .catch(function(error){
+                localStorage.setItem('cart', '')
                 console.log(error)
             })
         },
