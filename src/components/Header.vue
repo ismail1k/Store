@@ -10,7 +10,7 @@
                                 <ul class="p-0 m-0">
                                     <li><a href="javascript:void(0)" @click="$router.push('/')">Home</a></li>
                                     <li class="hassubs" v-if="$store.state.categories.length != 0">
-                                        <a href="javascript:void(0)" @click="$router.push('/category')">Categories</a>
+                                        <a href="javascript:void(0)">Categories</a>
                                         <ul>
                                             <li v-for="category in $store.state.categories" :key="category">
                                                 <router-link :to="'/category/'+category.id">{{category.name.replace(' ', '&nbsp;')}}</router-link>
