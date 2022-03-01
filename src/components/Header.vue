@@ -156,3 +156,16 @@ export default {
     },
 }
 </script>
+<style scoped>
+.logo *:hover {
+    transition: all 0.1s;
+    color:rgb(220,53,69);
+    font-size:50px;
+}
+.container{
+    background-color: rgba(255, 255, 255, 0);
+}
+.search_panel{
+    background-color: rgba(233, 233, 233, 0.952);
+}
+</style>

@@ -32,8 +32,8 @@
                         <!-- In Stock -->
                         <div class="in_stock_container" align="left">
                             <div class="availability fw-bolder">Availability:</div>
-                            <span v-if="product.inventory" class="fw-bolder">In Stock</span>
-                            <span v-if="!product.inventory" class="fw-bolder text-danger">Out Stock</span>
+                            <span v-if="product.inventory.quantity" class="fw-bolder">In Stock</span>
+                            <span v-if="!product.inventory.quantity" class="fw-bolder text-danger">Out Stock</span>
                         </div>
                         <div class="details_text fw-bolder" align="left">
                             <p>{{product.short_description}}</p>
@@ -47,14 +47,15 @@
                             </div>
                             <div class="button cart_button">
                                 <a v-if="loading" href="javascript:void(0)" @click="addToCart()">Proccess...</a>
-                                <a v-else href="javascript:void(0)" @click="addToCart()">Add to cart</a>
+                                <a v-if="!loading && product.inventory.quantity" href="javascript:void(0)" @click="addToCart()">Add to cart</a>
+                                <a v-if="!loading && !product.inventory.quantity" href="javascript:void(0)">Sold out</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row description_row" >
-                <div class="col">
+                <div class="col" v-if="product.description">
                     <div class="description_title_container" align="left">
                         <div class="description_title mt-4">Description</div>
                     </div>
@@ -73,13 +74,32 @@ export default {
         return {
             message: '',
             loading: false,
-            quantity: 1,
+            quantity: this.product.inventory.quantity?1:0,
         }
     },
     name: 'Product-Preview',
     props: {
         product: {
             type: Object,
+        },
+    },
+    watch: {
+        quantity(value){
+            if(value > 0 && value <= this.product.inventory.quantity){
+                this.quantity = value
+            } else {
+                if(value > this.product.inventory.quantity){
+                    this.quantity = this.product.inventory.quantity
+                } else {
+                    this.quantity = 0
+                }
+                
+            }
+            // if(value > this.product.inventory.quantity){
+            //     this.quantity = this.product.inventory.quantity
+            // } else if(value < 0){
+            //     this.quantity = 0
+            // }
         },
     },
     methods: {
