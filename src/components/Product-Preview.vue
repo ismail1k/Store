@@ -5,14 +5,14 @@
                 <div class="col-lg-6">
                     <div class="details_image">
                         <div class="details_image_large"><img :src="$base_url+product.media.primary.path" :alt="product.name"></div>
-                        <div class="mt-3 row align-items-center justify-content-start">
+                        <div class="mt-2 row align-items-center justify-content-start">
                             <div class="details_image_thumbnail col-3 d-flex align-items-center"><img :src="$base_url+product.media.primary.path" :alt="product.name"></div>
                             <!-- <div class="details_image_thumbnail col-3 d-flex align-items-center" v-for="video in product.media.video" :key="video">
                                 <video style="max-width:100%;" muted autoplay loop>
                                     <source :src="$base_url+video" :alt="product.name">
                                 </video>
                             </div> -->
-                            <div class="details_image_thumbnail col-3 d-flex align-items-center" v-for="image in product.media.image" :key="image">
+                            <div class="details_image_thumbnail col-3 d-flex align-items-center mb-2" v-for="image in product.media.image" :key="image">
                                 <img :src="$base_url+image.path" :alt="product.name">
                             </div>
                         </div>
