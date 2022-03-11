@@ -71,11 +71,12 @@ const store = new vuex.Store({
             }
             axios.get(process.env.VUE_APP_API+'/cart', {
                 params: {
-                    cart: localStorage.getItem('cart')
-                }
+                    cart: localStorage.getItem('cart'),
+                },
             })
             .then(function(response){
                 state.cart = response.data
+                console.log(state.cart)
             })
             .catch(function(error){
                 localStorage.setItem('cart', '')

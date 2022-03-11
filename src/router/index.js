@@ -7,6 +7,7 @@ import Category from '../views/Category.vue'
 import Search from '../views/Search.vue'
 import Contact from '../views/Contact.vue'
 import Cart from '../views/Cart.vue'
+import Checkout from '../views/Checkout.vue'
 
 //Auth routes
 import Login from '../views/Login.vue'
@@ -44,6 +45,11 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart,
+  },
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: Checkout,
   },
   {
     path: '/login',
