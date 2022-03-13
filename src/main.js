@@ -11,7 +11,7 @@ const app = createApp(App)
 // window.Pusher = require('pusher-js');
 // window.echo = new echo({
 //     broadcaster: 'pusher',
-//     key: 'WebSocketKey',
+//     key: 'your-pusher-key',
 //     wsHost: window.location.hostname,
 //     wsPort: 6001,
 //     forceTLS: false,
@@ -76,7 +76,6 @@ const store = new vuex.Store({
             })
             .then(function(response){
                 state.cart = response.data
-                console.log(state.cart)
             })
             .catch(function(error){
                 localStorage.setItem('cart', '')

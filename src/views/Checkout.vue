@@ -1,5 +1,4 @@
 <template>
-    <Layout>
         <div class="checkout">
             <div class="container">
                 <div class="row">
@@ -134,13 +133,11 @@
                 </div>
             </div>
         </div>
-    </Layout>
 </template>
 <script>
 import '@/assets/styles/checkout.css'
 import '@/assets/styles/checkout_responsive.css'
 import axios from 'axios'
-import Layout from '../components/Layout.vue'
 // import Spinner from '../components/Spinner.vue'
 export default {
     data(){
@@ -150,7 +147,6 @@ export default {
     },
     name: 'Checkout',
     components: {
-        Layout,
         // Spinner,
     },
     methods: {

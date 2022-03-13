@@ -1,5 +1,4 @@
 <template>
-    <Layout>
         <div class="container">
 			<div class="row">
                 <Spinner v-if="loading"></Spinner>
@@ -43,13 +42,11 @@
                 </div>
 			</div>
 		</div>
-    </Layout>
 </template>
 <script>
 import '@/assets/styles/contact.css'
 import '@/assets/styles/contact_responsive.css'
 import axios from 'axios'
-import Layout from '@/components/Layout.vue'
 import Spinner from '@/components/Spinner.vue'
 export default {
     data(){
@@ -66,7 +63,6 @@ export default {
     },
     name: 'Contact',
     components: {
-        Layout,
         Spinner,
     },
     methods: {

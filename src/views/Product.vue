@@ -1,5 +1,4 @@
 <template>
-    <Layout>
         <div class="d-flex justify-content-center align-items-center my-5" v-if="loading">
             <div class="spinner-border text-dark" role="status">
                 <span class="visually-hidden"></span>
@@ -24,13 +23,11 @@
         <div v-if="!preview && !loading" class="d-flex justify-content-center">
             Product not found!
         </div>
-    </Layout>
 </template>
 <script>
 import '@/assets/styles/product.css'
 import '@/assets/styles/product_responsive.css'
 import axios from 'axios'
-import Layout from '@/components/Layout.vue'
 import ProductPreview from '@/components/Product-Preview.vue'
 import ProductCart from '@/components/Product-Cart.vue'
 export default {
@@ -44,7 +41,6 @@ export default {
     },
     name: 'Product',
     components: {
-        Layout,
         ProductPreview,
         ProductCart,
     },

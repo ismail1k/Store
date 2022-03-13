@@ -1,5 +1,4 @@
 <template>
-    <Layout>
 		<div class="container" v-if="!loading && items.length">
 			<Spinner v-if="loading"></Spinner>
             <div v-else>
@@ -97,13 +96,11 @@
                 <router-link to="/">Click here to view more products</router-link>
             </div>
         </div>
-    </Layout>
 </template>
 <script>
 import '@/assets/styles/cart.css'
 import '@/assets/styles/cart_responsive.css'
 import axios from 'axios'
-import Layout from '@/components/Layout.vue'
 import ProductList from '@/components/Product-List.vue'
 import Spinner from '@/components/Spinner.vue'
 export default {
@@ -115,7 +112,6 @@ export default {
     },
     name: 'Cart',
     components: {
-        Layout,
         ProductList,
         Spinner,
     },

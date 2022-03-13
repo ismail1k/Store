@@ -1,5 +1,4 @@
 <template>
-    <Layout>
         <div class="my-3 mx-1 row justify-content-start">
 			<div class="row">
                 <div class="my-3 d-flex align-items-center justify-content-between">
@@ -31,14 +30,12 @@
                 </div>
 			</div>
 		</div>
-    </Layout>
 </template>
 <script>
 import '@/assets/styles/categories.css'
 import '@/assets/styles/categories_responsive.css'
 import axios from 'axios'
 import $ from 'jquery'
-import Layout from '../components/Layout.vue'
 import ProductCart from '../components/Product-Cart.vue'
 import Spinner from '../components/Spinner.vue'
 export default {
@@ -51,7 +48,6 @@ export default {
     },
     name: 'Category',
     components: {
-        Layout,
         ProductCart,
         Spinner,
     },

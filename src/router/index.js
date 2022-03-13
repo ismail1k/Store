@@ -20,36 +20,57 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {
+        layout: true,
+    },
   },
   {
     path: '/product/:product_name',
     name: 'Product',
     component: Product,
+    meta: {
+        layout: true,
+    },
   },
   {
     path: '/category/:category_id',
     name: 'Category',
     component: Category,
+    meta: {
+        layout: true,
+    },
   },
   {
     path: '/search/:q',
     name: 'Search',
     component: Search,
+    meta: {
+        layout: true,
+    },
   },
   {
     path: '/contact',
     name: 'Contact',
     component: Contact,
+    meta: {
+        layout: true,
+    },
   },
   {
     path: '/cart',
     name: 'Cart',
     component: Cart,
+    meta: {
+        layout: true,
+    },
   },
   {
     path: '/checkout',
     name: 'Checkout',
     component: Checkout,
+    meta: {
+        layout: true,
+    },
   },
   {
     path: '/login',
@@ -66,6 +87,9 @@ const routes = [
   {
     path: '/:catchAll(.*)',
     component: C404,
+    meta: {
+        layout: true,
+    },
   }
 ]
 
