@@ -85,7 +85,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button"><router-link to="/checkout">Proceed to checkout</router-link></div>
+						<div class="button checkout_button w-100"><router-link to="/checkout">Proceed to checkout</router-link></div>
 					</div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@ export default {
             let subtotal = 0
             this.$store.state.cart.items.forEach(item => {
                 subtotal = subtotal+item.price
-            });
+            })
             return subtotal
         },
         shipping: function(){
@@ -159,7 +159,6 @@ export default {
                 },
             })
             .then(async function(){
-                // console.log(response.data)
                 localStorage.setItem('cart', '')
                 await self.$store.commit('loadCart')
                 await self.load()

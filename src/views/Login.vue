@@ -1,34 +1,24 @@
 <template>
-       <div class="container">
-    <div class="row d-flex justify-content-center mt-5">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card py-3 px-2">
-                <div class="division">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="line l"></div>
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card py-3 px-2">
+                    <div class="myform mt-4">
+                        <div v-if="alert" class="alert alert-warning">
+                            {{alert}}
                         </div>
-                        <div class="col-6"><span></span></div>
-                        <div class="col-3">
-                            <div class="line r"></div>
+                        <div class="form-group"> <input type="email" v-model="email" class="form-control" placeholder="Email"> </div>
+                        <div class="form-group"> <input type="password" v-model="password" class="form-control" placeholder="Password"> </div>
+                        <div class="row">
+                            <div class="col-md-6 col-12"></div>
+                            <div class="col-md-6 col-12 bn">Forget password ?</div>
                         </div>
+                        <div class="form-group mt-3"> <button type="button" @click="login()" class="btn btn-block btn-primary btn-lg"><small>Login</small></button> </div>
                     </div>
                 </div>
-                <form class="myform">
-                    <div class="form-group"> <input type="email" class="form-control" placeholder="Email"> </div>
-                    <div class="form-group"> <input type="password" class="form-control" placeholder="Password"> </div>
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group form-check"> <input type="checkbox" class="form-check-input" id="exampleCheck1"> <label class="form-check-label" for="exampleCheck1">Stay connected</label> </div>
-                        </div>
-                        <div class="col-md-6 col-12 bn">Forget password ?</div>
-                    </div>
-                    <div class="form-group mt-3"> <button type="button" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Login</small></button> </div>
-                </form>
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>

@@ -43,7 +43,7 @@
                         <div class="product_quantity_container d-flex align-items-center justify-content-between" align="left">
                             <div class="product_quantity clearfix">
                                 <span>Qty</span>
-                                <input id="quantity_input" type="text" v-model="quantity">
+                                <input id="quantity_input" style="mx-2" type="text" v-model="quantity" onclick="this.select()">
                             </div>
                             <div class="button cart_button">
                                 <a v-if="loading" href="javascript:void(0)" @click="addToCart()">Proccess...</a>

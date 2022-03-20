@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 @import "../assets/styles/main_styles.css";
 @import "../assets/styles/responsive.css";
 @import "../assets/plugins/fontawesome-4.7.0/css/font-awesome.css";
