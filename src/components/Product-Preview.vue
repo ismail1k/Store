@@ -113,6 +113,7 @@ export default {
             })
             .then(function(response){
                 if(response.data.status == 200){
+                    self.$store.commit('loadCart')
                     self.$router.push({path: '/cart'})
                 } else {
                     self.message = 'Error: can\' add product to cart!'

@@ -18,7 +18,7 @@
                     <div class="cart_item_quantity">
                         <div class="product_quantity clearfix">
                             <span>Qty</span>
-                            <input id="quantity_input" class="px-0" type="text" pattern="[0-9]*" :value="item.quantity">
+                            <input id="quantity_input" class="px-0" type="text" pattern="[0-9]*" :value="item.quantity" disabled>
                         </div>
                     </div>
                 </div>

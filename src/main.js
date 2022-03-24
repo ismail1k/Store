@@ -83,9 +83,13 @@ const store = new vuex.Store({
             })
         },
         loadConfig(state){
-            axios.get(process.env.VUE_APP_API+'/config/load')
+            axios.get(process.env.VUE_APP_API+'/config/view', {
+                params: {
+                    key: 'currency',
+                },
+            })
             .then(function(response){
-                state.currency = response.data.currency
+                state.currency = response.data.value
             })
             .catch(function(error){
                 console.log(error)
