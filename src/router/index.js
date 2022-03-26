@@ -8,6 +8,7 @@ import Search from '../views/Search.vue'
 import Contact from '../views/Contact.vue'
 import Cart from '../views/Cart.vue'
 import Checkout from '../views/Checkout.vue'
+import Thankyou from '../views/Thankyou.vue'
 
 //Auth routes
 import Login from '../views/Login.vue'
@@ -68,6 +69,14 @@ const routes = [
     path: '/checkout',
     name: 'Checkout',
     component: Checkout,
+    meta: {
+        layout: true,
+    },
+  },
+  {
+    path: '/thank-you/:order_id',
+    name: 'thankyou',
+    component: Thankyou,
     meta: {
         layout: true,
     },

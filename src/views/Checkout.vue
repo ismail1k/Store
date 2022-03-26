@@ -121,7 +121,7 @@ export default {
                 address: '',
                 zip: '',
                 note: '',
-                payment_method: 'cc',
+                payment_method: 'paypal',
             },
         }
     },
@@ -158,9 +158,37 @@ export default {
             return true
         },
         payment: async function(payment_method, order_id){
-            console.log(order_id)
+            let self = this
             if(payment_method == 'paypal'){
-                // paypal
+                self.loading = true
+                axios.get(this.$api+'/payment/paypal', {
+                    params: {
+                        token: localStorage.getItem('token'),
+                        order_id: order_id,
+                    },
+                })
+                .then(function(response){
+                    if(response.data.status == 200){
+                        let paypal = window.open(response.data.url, '_blank', 'width:calc(100vw / 2);height:calc(100vh / 2);')
+                        paypal.focus()
+                        let interval = setInterval(function(){
+                            if(paypal.closed){
+                                clearInterval(interval)
+                                self.loading = false
+                                self.orderCheck(order_id)
+                            }
+                        }, 2000)
+                    } else if(response.data.status == 500){
+                        self.loading = false
+                        self.alert = response.data.message?response.data.message:'Error!'
+                    } else {
+                        self.loading = false
+                    }
+                })
+                .catch(function(error){
+                    self.loading = false
+                    console.log(error)
+                })
             }
             if(payment_method == 'cod'){
                 // cod
@@ -168,6 +196,29 @@ export default {
             if(payment_method == 'cc'){
                 // cc
             }
+        },
+        orderCheck: function(order_id){
+            this.loading = true
+            let self = this
+            axios.get(this.$api+'/order/view', {
+                params: {
+                    token: localStorage.getItem('token'),
+                    order_id: order_id,
+                },
+            })
+            .then(function(response){
+                if(response.data.payment_method){
+                    self.$router.push('/thank-you/'+order_id)
+                } else {
+                    self.alert = 'Error while checking order!'
+                }
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+            .finally(function(){
+                self.loading = false
+            })
         },
         order: async function(){
             this.alert = ''
@@ -186,14 +237,13 @@ export default {
                 note: self.credentials.note,
             })
             .then(async function(response){
+                self.loading = false
                 if(response.data.status == 200){
                     await self.payment(self.credentials.payment_method, response.data.order_id)
                 }
             })
             .catch(function(error){
                 console.log(error)
-            })
-            .finally(function(){
                 self.loading = false
             })
         },
