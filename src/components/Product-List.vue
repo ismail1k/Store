@@ -57,7 +57,7 @@ export default {
             this.loading = true
             let self = this
             axios.post(this.$api+'/cart/removeFromCart', {
-                cart: localStorage.getItem('cart'),
+                cart_id: localStorage.getItem('cart'),
                 item_id: self.item.item_id,
             })
             .then(function(response){

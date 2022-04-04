@@ -137,7 +137,7 @@ export default {
             let self = this
             axios.get(this.$api+'/cart', {
                 params: {
-                    cart: localStorage.getItem('cart')
+                    cart_id: localStorage.getItem('cart')
                 }
             })
             .then(function(response){
@@ -155,7 +155,7 @@ export default {
             let self = this
             axios.get(this.$api+'/cart/clear', {
                 params: {
-                    cart: localStorage.getItem('cart')
+                    cart_id: localStorage.getItem('cart')
                 },
             })
             .then(async function(){

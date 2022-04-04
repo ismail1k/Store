@@ -107,7 +107,7 @@ export default {
             this.loading = true
             let self = this
             axios.post(this.$api+'/cart/addToCart', {
-                cart: localStorage.getItem('cart'),
+                cart_id: localStorage.getItem('cart'),
                 product_id: self.product.id,
                 quantity: self.quantity,
             })

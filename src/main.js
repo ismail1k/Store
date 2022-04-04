@@ -61,9 +61,9 @@ const store = new vuex.Store({
         },
         async loadCart(state){
             if(!localStorage.getItem('cart')){
-                await axios.post(process.env.VUE_APP_API+'/cart/create')
+                await axios.get(process.env.VUE_APP_API+'/cart/create')
                 .then(function(response){
-                    localStorage.setItem('cart', response.data.cart)
+                    localStorage.setItem('cart', response.data.cart_id)
                 })
                 .catch(function(error){
                     console.log(error)
@@ -71,11 +71,15 @@ const store = new vuex.Store({
             }
             axios.get(process.env.VUE_APP_API+'/cart', {
                 params: {
-                    cart: localStorage.getItem('cart'),
+                    cart_id: localStorage.getItem('cart'),
                 },
             })
             .then(function(response){
-                state.cart = response.data
+                if(response.data.status == 404){
+                    localStorage.setItem('cart', '')
+                } else {
+                    state.cart = response.data
+                }
             })
             .catch(function(error){
                 localStorage.setItem('cart', '')
