@@ -90,10 +90,10 @@
                                 <input type="radio" v-model="credentials.payment_method" value="cod">
                                 <span class="checkmark"></span>
                             </label>
-                            <label class="payment_option clearfix">Credit card
+                            <!-- <label class="payment_option clearfix">Credit card
                                 <input type="radio" v-model="credentials.payment_method" value="cc">
                                 <span class="checkmark"></span>
-                            </label>
+                            </label> -->
                         </div>
                     </div>
                     <div v-if="$store.state.cart.items.length" class="button order_button" @click="order()"><a href="javascript:void(0)">Place Order</a></div>
@@ -121,7 +121,7 @@ export default {
                 address: '',
                 zip: '',
                 note: '',
-                payment_method: 'paypal',
+                payment_method: 'cod',
             },
         }
     },
