@@ -259,10 +259,11 @@ export default {
         let self = this
         axios.get(this.$api+'/cart', {
             params: {
-                cart: localStorage.getItem('cart'),
+                cart_id: localStorage.getItem('cart'),
             },
         })
         .then(function(response){
+            console.log(response.data)
             if(!response.data.items.length){
                 self.$router.back()
             }
