@@ -3,7 +3,7 @@
     <div v-else class="cart_item d-flex align-items-lg-center align-items-center justify-content-between">
         <!-- Image & Name -->
         <div class="cart_item_image">
-            <div><img :src="$base_url+item.media.primary.path" :alt="item.name"></div>
+            <div class="d-flex justify-content-center align-items-center" style="height:200px;"><img :src="$base_url+item.media.primary.path" :alt="item.name" style="max-height:200px;"></div>
         </div>
         <div class="mx-2 d-md-flex justify-content-between w-100">
             <div class="col" align="left">
