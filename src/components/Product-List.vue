@@ -25,7 +25,7 @@
                 <!-- Total -->
                 <div class="col p-0 m-0 row justify-content-center">
                     <div class="cart_item_total px-0 d-flex justify-content-center">
-                        <span>{{(item.price).toFixed(2)}}</span>
+                        <span>{{(((item.price-item.discount)*item.quantity)).toFixed(2)}}</span>
                         &nbsp;{{$store.state.currency}}
                     </div>
                 </div>
@@ -61,7 +61,6 @@ export default {
                 item_id: self.item.item_id,
             })
             .then(function(response){
-                console.log(response.data)
                 if(response.data.status == 200){
                     self.close()
                 } else {

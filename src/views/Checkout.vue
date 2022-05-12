@@ -69,7 +69,7 @@
                         <ul class="order_list my-5">
                             <li v-for="item in $store.state.cart.items" :key="item" class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="order_list_title">{{item.name}}</div>
-                                <div class="order_list_value ml-auto">{{item.price}}&nbsp;{{$store.state.currency}}</div>
+                                <div class="order_list_value ml-auto">{{((item.price-item.discount)*item.quantity)}}&nbsp;{{$store.state.currency}}</div>
                             </li>
                         </ul>
                         <span v-if="$store.state.cart.items">{{calcTotal()}}</span>
@@ -249,8 +249,8 @@ export default {
         },
         calcTotal: function(){
             let total = 0
-            this.$store.state.cart.items.forEach(element => {
-                total += element.price
+            this.$store.state.cart.items.forEach(item => {
+                total += ((item.price-item.discount)*item.quantity)
             })
             this.total = total
         },
@@ -263,7 +263,6 @@ export default {
             },
         })
         .then(function(response){
-            console.log(response.data)
             if(!response.data.items.length){
                 self.$router.back()
             }

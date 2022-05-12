@@ -119,7 +119,7 @@ export default {
         subtotal: function(){
             let subtotal = 0
             this.$store.state.cart.items.forEach(item => {
-                subtotal = subtotal+item.price
+                subtotal += ((item.price-item.discount)*item.quantity)
             })
             return subtotal
         },
