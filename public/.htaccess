@@ -1,7 +1,10 @@
-RewriteEngine On
-RewriteBase /
-RewriteCond %{ENV:HTTPS} !on [NC]
-RewriteRule ^(.*)$ https://myURL.com/$1 [R,L]
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule . index.html [L]
+<IfModule mod_rewrite.c>
+  RewriteRule ^(SUBDIRECTORY_FOO|SUBDIRECTORY_BAR)($|/) - [L]
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
