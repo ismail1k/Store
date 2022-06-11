@@ -26,6 +26,11 @@
                                 </div>
                             </div>
                             <div>
+                                <!-- Email -->
+                                <label for="checkout_phone">Email*</label>
+                                <input v-model="credentials.email" type="email" id="checkout_email" class="checkout_input" required="required">
+                            </div>
+                            <div>
                                 <!-- Phone no -->
                                 <label for="checkout_phone">Phone no*</label>
                                 <input v-model="credentials.phone" type="phone" id="checkout_phone" class="checkout_input" required="required">
@@ -82,10 +87,10 @@
                     <!-- Payment Options -->
                     <div class="payment">
                         <div class="mt-5">
-                            <label class="payment_option clearfix">Paypal
+                            <!-- <label class="payment_option clearfix">Paypal
                                 <input type="radio" v-model="credentials.payment_method" value="paypal">
                                 <span class="checkmark"></span>
-                            </label>
+                            </label> -->
                             <label class="payment_option clearfix">Cach on delivery
                                 <input type="radio" v-model="credentials.payment_method" value="cod">
                                 <span class="checkmark"></span>
@@ -117,6 +122,7 @@ export default {
             credentials: {
                 firstname: '',
                 lastname: '',
+                email: '',
                 phone: '',
                 address: '',
                 zip: '',
@@ -137,6 +143,10 @@ export default {
             }
             if(!this.credentials.lastname){
                 this.alert = 'Please set lastname!'
+                return false
+            }
+            if(!this.credentials.email){
+                this.alert = 'Please set email!'
                 return false
             }
             if(!this.credentials.phone){
@@ -191,7 +201,24 @@ export default {
                 })
             }
             if(payment_method == 'cod'){
-                // cod
+                self.loading = true
+                axios.get(this.$api+'/payment/cod', {
+                    params: {
+                        token: localStorage.getItem('token'),
+                        order_id: order_id,
+                    },
+                })
+                .then(function(response){
+                    if(response.data.status == 200){
+                        self.orderCheck(order_id)
+                    }
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
+                .finally(function(){
+                    self.loading = false
+                })
             }
             if(payment_method == 'cc'){
                 // cc
@@ -232,6 +259,7 @@ export default {
                 token: localStorage.getItem('token'),
                 cart_id: localStorage.getItem('cart'),
                 fullname: self.credentials.firstname+' '+self.credentials.lastname,
+                email: self.credentials.email,
                 phone: self.credentials.phone,
                 address: self.credentials.address+' '+self.credentials.zip,
                 note: self.credentials.note,

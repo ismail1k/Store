@@ -18,8 +18,8 @@
                                         </ul>
                                     </li>
                                     <li><router-link to="/Contact">Contact</router-link></li>
-                                    <li v-if="!this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/login')">Login</a></li>
-                                    <li v-if="this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/acccunt')">My Account</a></li>
+                                    <!-- <li v-if="!this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/login')">Login</a></li>
+                                    <li v-if="this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/acccunt')">My Account</a></li> -->
                                 </ul>
                             </nav>
                             <div class="header_extra ml-auto">
@@ -95,8 +95,8 @@
                             </ul>
                         </li>
                         <li class="page_menu_item menu_mm"><a href="javascript:void(0)" @click="$router.push('/contact')">Contact<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm" v-if="!this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/login')">Login<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm" v-if="this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/account')">My Account<i class="fa fa-angle-down"></i></a></li>
+                        <!-- <li class="page_menu_item menu_mm" v-if="!this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/login')">Login<i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item menu_mm" v-if="this.$store.state.user.auth"><a href="javascript:void(0)" @click="$router.push('/account')">My Account<i class="fa fa-angle-down"></i></a></li> -->
                     </ul>
                 </div>
             </div>
