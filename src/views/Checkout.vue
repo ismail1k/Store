@@ -211,29 +211,17 @@ export default {
                 .then(function(response){
                     if(response.data.status == 200){
                         self.orderCheck(order_id)
-<<<<<<< HEAD
                     }
                 })
                 .catch(function(error){
-=======
-                    } else {
-                        self.alert = response.data.message?response.data.message:'Error!'
-                    }
-                })
-                .catch(function(error){
-                    self.loading = false
->>>>>>> 803e3eb056f70fb01847a45ed99e877f2786e602
                     console.log(error)
                 })
                 .finally(function(){
                     self.loading = false
                 })
-<<<<<<< HEAD
             }
             if(payment_method == 'cc'){
                 // cc
-=======
->>>>>>> 803e3eb056f70fb01847a45ed99e877f2786e602
             }
         },
         orderCheck: function(order_id){
@@ -245,32 +233,12 @@ export default {
                     order_id: order_id,
                 },
             })
-            .then(async function(response){
-                if(response.data.payed){
-                    await self.clearCart()
+            .then(function(response){
+                if(response.data.payment_method){
                     self.$router.push('/thank-you/'+order_id)
                 } else {
                     self.alert = 'Error while checking order!'
                 }
-            })
-            .catch(function(error){
-                console.log(error)
-            })
-            .finally(function(){
-                self.loading = false
-            })
-        },
-        clearCart: async function(){
-            this.loading = true
-            let self = this
-            await axios.get(this.$api+'/cart/clear', {
-                params: {
-                    token: localStorage.getItem('token'),
-                    cart_id: localStorage.getItem('cart'),
-                },
-            })
-            .then(function(){
-                return true
             })
             .catch(function(error){
                 console.log(error)
