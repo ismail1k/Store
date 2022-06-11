@@ -1,12 +1,12 @@
 <template>
     <div class="product col-sm-12 col-md-6 col-lg-4 col-xl-3" v-if="product">
         <div class="row">
-            <div class="product_image d-flex justify-content-center align-items-center" style="height:300px;">
+            <div class="product_image d-flex justify-content-center align-items-center px-1" style="width:300px;">
                 <router-link :to="'/product/'+product.url"><img style="max-height:300px;" :src="$base_url+product.media.primary.path"></router-link>
             </div>
-            <div class="product_content py-3">
+            <div class="product_content py-2">
                 <div class="product_title mx-0"><router-link :to="'/product/'+product.url">{{product.name.length>50?product.name.substring(0, 50)+' ...':product.name}}</router-link></div>
-                <div class="d-flex align-items-center justify-content-between mx-2">
+                <div class="d-flex align-items-center justify-content-between mx-0">
                     <div class="product_price">
                         <small class="text-dark">
                             <span v-if="product.discount">

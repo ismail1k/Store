@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                     <td>Payment Method:</td>
-                    <td v-text="order.payment_method"></td>
+                    <td v-text="order.payment.provider"></td>
                 </tr>
                 <tr v-if="order.note">
                     <td>Additional Note:</td>
