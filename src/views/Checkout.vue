@@ -234,7 +234,8 @@ export default {
                 },
             })
             .then(function(response){
-                if(response.data.payment_method){
+                if(response.data.payment){
+                    self.$store.commit('loadCart')
                     self.$router.push('/thank-you/'+order_id)
                 } else {
                     self.alert = 'Error while checking order!'
